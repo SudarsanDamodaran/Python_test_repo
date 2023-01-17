@@ -22,11 +22,11 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "sansnavi7@gmail.com"
     
-     name: Login to DockerHub Registry
+    - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         
-      - name: Build Docker image
+    - name: Build Docker image
         run: docker build . --file Dockerfile --tag vgiot/python:0.0.1
         
-      - name: Push to Docker Hub
+    - name: Push to Docker Hub
         run: docker push vgiot/python:0.0.1
